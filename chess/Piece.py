@@ -3,6 +3,7 @@ import pyglet
 import BasePiece
 
 
+
 class Piece(BasePiece.BasePiece):
     def __init__(self, name, x, y):
         self.__name = name
@@ -12,11 +13,14 @@ class Piece(BasePiece.BasePiece):
         self.__position_history = []
         self.PreparePiece(name)
         
+        
     def Kill(self):
         pass
     
+    
     def Killed(self):
         self.isKilled = True
+    
     
     def Move(self, x, y, window):
         window.clear()

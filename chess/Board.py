@@ -2,10 +2,12 @@ import pyglet
 import BaseBoard
 
 
+
 class Board:
     def __init__(self):
         self.origin_position = [200, 50]
         self.board = BaseBoard.BaseBoard(self.origin_position)
+        
         
     def ShowBoard(self):
         self.board.DrawBoard()
