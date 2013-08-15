@@ -12,6 +12,7 @@ class Piece(BasePiece.BasePiece):
         self.isKilled = False
         self.__position_history = []
         self.PreparePiece(name)
+        self.__selected = False
         
         
     def Kill(self):
@@ -22,13 +23,23 @@ class Piece(BasePiece.BasePiece):
         self.isKilled = True
     
     
-    def Move(self, x, y, window):
-        window.clear()
-        self.__target_position = [x, y]
-        self.current_position = self.__target_position
-        self.target_position = []
-        self.PreparePiece(self.__name)
+    def Select(self):
+        self.__selected = True
+        self.ChangeColor()
         self.ShowPiece()
+    
+    
+    def Move(self, x, y, window):
+        if self.__selected == False:
+            print('not selected!')
+        else:
+            window.clear()
+            self.__target_position = [x, y]
+            self.current_position = self.__target_position
+            self.target_position = []
+            self.PreparePiece(self.__name)
+            self.ShowPiece()
+            self.__selected = False
     
     
 
@@ -38,7 +49,12 @@ if __name__ == "__main__":
     
     @window.event()
     def on_mouse_press(x, y, button, modifiers):
+        if x in range(p.current_position[0] - 12, 
+                      p.current_position[0] + 12) and y in range(p.current_position[1] - 12, 
+                         p.current_position[1] + 12):
+            p.Select()
         p.Move(x, y, window)
+        #p.Move(x, y, window)
     
     @window.event()
     def on_draw():

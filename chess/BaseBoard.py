@@ -6,13 +6,16 @@ import pyglet
 class BaseBoard:
     def __init__(self, orig_pos):
         self.__board_batch = pyglet.graphics.Batch()
+        #棋盘背景色及线条颜色、左下角坐标、格子间距
         self.__bgcolor = (255, 255, 255)
         self.__linecolor = (0, 0, 0, 0, 0, 0)
         self.__origin_position = orig_pos
         self.__vertical_spacing = 30
         self.__horizontal_spacing = 30
+        #坐标对照表
         self.pos_table = []
         
+        #填充棋盘batch
         self.__create_board(self.__origin_position[0], self.__origin_position[1])
         self.__create_board(self.__origin_position[0],
                             self.__vertical_spacing * 5 + self.__origin_position[1])
@@ -58,7 +61,7 @@ class BaseBoard:
                                       x = x + 6 * self.__horizontal_spacing,
                                       y = y + self.__origin_position[1] + self.__vertical_spacing / 2)
                    
-                    
+                                     
     def __create_gap(self, x_orig, y_orig, x_right, y_enl):
         vertex_edge = (x_orig, 5 * y_enl + y_orig,
                        x_orig, 4 * y_enl + y_orig,
@@ -70,6 +73,7 @@ class BaseBoard:
                              0, 0, 0, 0)
         self.__board_batch.add(4, pyglet.gl.GL_LINE_LOOP, None,
                              ('v2i', vertex_edge), ('c4B', vertex_edge_color))
+    
     
     def __create_crosslines(self, x_orig=200, y_orig=50):
         left0   =   3 * self.__horizontal_spacing + x_orig

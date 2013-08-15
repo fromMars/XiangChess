@@ -9,6 +9,7 @@ class BasePiece:
         self.current_position = [x, y]
         self.PreparePiece(name)
     
+    
     def PreparePiece(self, name):
         self.circle = Circle.Circle(self.current_position[0], 
                                     self.current_position[1])
@@ -21,6 +22,9 @@ class BasePiece:
         self.title.title.draw()
         
     
+    def ChangeColor(self):
+        self.circle.ChangeColor()
+        
     
     
 if __name__ == "__main__":
