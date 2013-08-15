@@ -4,6 +4,7 @@ import Circle
 import Title
 
 
+
 class BasePiece:
     def __init__(self, name, x, y):
         self.current_position = [x, y]

@@ -53,8 +53,9 @@ if __name__ == "__main__":
                       p.current_position[0] + 12) and y in range(p.current_position[1] - 12, 
                          p.current_position[1] + 12):
             p.Select()
-        p.Move(x, y, window)
-        #p.Move(x, y, window)
+        else:
+            p.Move(x, y, window)
+        
     
     @window.event()
     def on_draw():

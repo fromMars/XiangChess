@@ -24,7 +24,6 @@ class Circle:
             tmp_color.append(self.__color[0])
             tmp_color.append(self.__color[1])
             tmp_color.append(self.__color[2])
-            print(tmp_color)
         self.circle_batch.add(100, pyglet.gl.GL_TRIANGLE_FAN, None, 
                               ('v2f', self.__vertex_circle), ('c3B', tmp_color))
 

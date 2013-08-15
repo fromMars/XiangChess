@@ -2,6 +2,7 @@
 import pyglet
 
 
+
 class Title:
     def __init__(self, name, x, y):
         self.title = None
@@ -9,6 +10,7 @@ class Title:
         self.__color = [(255, 0, 0, 255), (0, 0, 0, 255)]
         self.__center_position = [x, y]
         self.__PrepareTitle(name)
+    
     
     def __PrepareTitle(self, name):
         self.title = pyglet.text.Label(name, 
