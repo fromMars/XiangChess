@@ -15,14 +15,15 @@ class BaseBoard:
         
         self.__create_board(self.__origin_position[0], self.__origin_position[1])
         self.__create_board(self.__origin_position[0],
-                            self.__vertical_spacing * 5 + 50)
+                            self.__vertical_spacing * 5 + self.__origin_position[1])
+        self.__create_crosslines(self.__origin_position[0], self.__origin_position[1])
         self.__create_gap(self.__origin_position[0], self.__origin_position[1],
                           8 * self.__horizontal_spacing + self.__origin_position[0],
                           self.__vertical_spacing)
         self.__create_text(self.__origin_position[0], 4 * self.__vertical_spacing)
+        
     
-    
-    def __create_board(self, x_orig=220, y_orig=50):
+    def __create_board(self, x_orig=200, y_orig=50):
         x_enl = self.__horizontal_spacing
         y_enl = self.__vertical_spacing
         x_right = 8 * x_enl + x_orig
@@ -47,15 +48,15 @@ class BaseBoard:
                                       color=color,
                                       anchor_x='center',
                                       anchor_y='center',
-                                      x=x + 2 * self.__horizontal_spacing,
-                                      y=y + 50 + self.__vertical_spacing / 2)
+                                      x = x + 2 * self.__horizontal_spacing,
+                                      y = y + self.__origin_position[1] + self.__vertical_spacing / 2)
         self.__hanjie = pyglet.text.Label('漢界', font_name='msyh',
                                       font_size=12, bold=True,
                                       color=color,
                                       anchor_x='center',
                                       anchor_y='center',
-                                      x=x + 6 * self.__horizontal_spacing,
-                                      y=y + 50 + self.__vertical_spacing / 2)
+                                      x = x + 6 * self.__horizontal_spacing,
+                                      y = y + self.__origin_position[1] + self.__vertical_spacing / 2)
                    
                     
     def __create_gap(self, x_orig, y_orig, x_right, y_enl):
@@ -70,7 +71,31 @@ class BaseBoard:
         self.__board_batch.add(4, pyglet.gl.GL_LINE_LOOP, None,
                              ('v2i', vertex_edge), ('c4B', vertex_edge_color))
     
-
+    def __create_crosslines(self, x_orig=200, y_orig=50):
+        left0   =   3 * self.__horizontal_spacing + x_orig
+        right0  =   5 * self.__horizontal_spacing + x_orig
+        bottom0 =   y_orig
+        top0    =   2 * self.__vertical_spacing + y_orig
+        
+        left1   =   3 * self.__horizontal_spacing + x_orig
+        right1  =   5 * self.__horizontal_spacing + x_orig
+        bottom1 =   y_orig + 7 * self.__vertical_spacing
+        top1    =   2 * self.__vertical_spacing + y_orig + 7 * self.__vertical_spacing
+         
+        self.__board_batch.add(2, pyglet.gl.GL_LINES, None,
+                                 ('v2i', (left0, bottom0, right0, top0)),
+                                 ('c3B', self.__linecolor))
+        self.__board_batch.add(2, pyglet.gl.GL_LINES, None,
+                                 ('v2i', (left0, top0, right0, bottom0)),
+                                 ('c3B', self.__linecolor))
+        self.__board_batch.add(2, pyglet.gl.GL_LINES, None,
+                                 ('v2i', (left1, bottom1, right1, top1)),
+                                 ('c3B', self.__linecolor))
+        self.__board_batch.add(2, pyglet.gl.GL_LINES, None,
+                                 ('v2i', (left1, top1, right1, bottom1)),
+                                 ('c3B', self.__linecolor))
+        
+        
     def __fill_pos_table(self):
         pass
         

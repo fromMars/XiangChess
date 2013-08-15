@@ -5,7 +5,7 @@ import BaseBoard
 
 class Board:
     def __init__(self):
-        self.origin_position = [200, 50]
+        self.origin_position = [240, 110]
         self.board = BaseBoard.BaseBoard(self.origin_position)
         
         
