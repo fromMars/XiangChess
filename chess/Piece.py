@@ -24,7 +24,7 @@ class Piece(BasePiece.BasePiece):
     
     
     def Select(self, window):
-        window.clear()
+        #window.clear()
         if self.__selected == False:
             self.__selected = True
             self.ChangeColor()
@@ -36,10 +36,10 @@ class Piece(BasePiece.BasePiece):
     
     
     def Move(self, x, y, window):
+        window.clear()
         if self.__selected == False:
-            print('not selected!')
+            pass
         else:
-            window.clear()
             self.__target_position = [x, y]
             self.current_position = self.__target_position
             self.target_position = []
@@ -55,10 +55,10 @@ if __name__ == "__main__":
     
     @window.event()
     def on_mouse_press(x, y, button, modifiers):
-        if x in range(p.current_position[0] - 12, 
-                      p.current_position[0] + 12) and y in range(p.current_position[1] - 12, 
-                         p.current_position[1] + 12):
+        if x in range(p.current_position[0] - 12, p.current_position[0] + 12) \
+        and y in range(p.current_position[1] - 12, p.current_position[1] + 12):
             p.Select(window)
+            window.clear()
         else:
             p.Move(x, y, window)
         

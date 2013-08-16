@@ -16,7 +16,12 @@ if __name__ == "__main__":
     
     @window.event()
     def on_mouse_press(x, y, button, modifiers):
-        piece.Move(x, y, window)
+        if x in range(piece.current_position[0] - 12, piece.current_position[0] + 12) \
+        and y in range(piece.current_position[1] - 12, piece.current_position[1] + 12):
+            piece.Select(window)
+            window.clear()
+        else:
+            piece.Move(x, y, window)
     
     @window.event()
     def on_draw():
