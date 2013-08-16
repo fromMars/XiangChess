@@ -23,10 +23,16 @@ class Piece(BasePiece.BasePiece):
         self.isKilled = True
     
     
-    def Select(self):
-        self.__selected = True
-        self.ChangeColor()
-        self.ShowPiece()
+    def Select(self, window):
+        window.clear()
+        if self.__selected == False:
+            self.__selected = True
+            self.ChangeColor()
+            self.ShowPiece()
+        else:
+            self.__selected = False
+            self.ChangeColor()
+            self.ShowPiece()
     
     
     def Move(self, x, y, window):
@@ -52,7 +58,7 @@ if __name__ == "__main__":
         if x in range(p.current_position[0] - 12, 
                       p.current_position[0] + 12) and y in range(p.current_position[1] - 12, 
                          p.current_position[1] + 12):
-            p.Select()
+            p.Select(window)
         else:
             p.Move(x, y, window)
         
