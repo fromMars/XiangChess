@@ -1,4 +1,7 @@
-# -*- coding: utf-8 -*-  
+# -*- coding: utf-8 -*-
+# 棋盘基类，创建棋盘
+# 
+
 import pyglet
 
 
