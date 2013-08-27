@@ -61,7 +61,7 @@ if __name__ == "__main__":
             window.clear()
         else:
             p.Move(x, y, window)
-        
+
     
     @window.event()
     def on_draw():
