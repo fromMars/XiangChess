@@ -1,3 +1,4 @@
+# coding=utf-8
 import pyglet
 import Board
 import Piece
@@ -6,13 +7,13 @@ import Piece
 
 if __name__ == "__main__":
     window = pyglet.window.Window()
-    #±³¾°É«
+
     bgcolor = (255, 255, 255, 255)
     pyglet.gl.glClearColor(*bgcolor)
-    #´´½¨ÆåÅÌ
+    
     board = Board.Board()
-    #´´½¨Æå×Ó
-    piece = Piece.Piece("Ïó", 100, 100)
+    piece = Piece.Piece(u"è±¡", 100, 100)
+    
     
     @window.event()
     def on_mouse_press(x, y, button, modifiers):

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 import pyglet
 import Circle
 import Title
@@ -30,7 +30,7 @@ class BasePiece:
     
 if __name__ == "__main__":
     window = pyglet.window.Window()
-    p = BasePiece("象", 100, 100)
+    p = BasePiece(u"象", 100, 100)
     
     @window.event()
     def on_draw():

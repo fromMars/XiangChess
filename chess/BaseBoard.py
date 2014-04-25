@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 # 棋盘基类，创建棋盘
 # 
 
@@ -19,7 +19,8 @@ class BaseBoard:
         self.pos_table = []
         
         #填充棋盘batch
-        self.__create_board(self.__origin_position[0], self.__origin_position[1])
+        self.__create_board(self.__origin_position[0], 
+                            self.__origin_position[1])
         self.__create_board(self.__origin_position[0],
                             self.__vertical_spacing * 5 + self.__origin_position[1])
         self.__create_crosslines(self.__origin_position[0], self.__origin_position[1])
@@ -49,14 +50,14 @@ class BaseBoard:
     
     def __create_text(self, x, y):
         color = [0, 0, 0, 255]
-        self.__chuhe = pyglet.text.Label('楚河', font_name='msyh',
+        self.__chuhe = pyglet.text.Label(u'楚河', font_name='msyh',
                                       font_size=12, bold=True,
                                       color=color,
                                       anchor_x='center',
                                       anchor_y='center',
                                       x = x + 2 * self.__horizontal_spacing,
                                       y = y + self.__origin_position[1] + self.__vertical_spacing / 2)
-        self.__hanjie = pyglet.text.Label('漢界', font_name='msyh',
+        self.__hanjie = pyglet.text.Label(u'汉界', font_name='msyh',
                                       font_size=12, bold=True,
                                       color=color,
                                       anchor_x='center',
@@ -116,10 +117,11 @@ class BaseBoard:
 
 def main():
     window = pyglet.window.Window()
-    board = BaseBoard()
+    board = BaseBoard((10, 10))
     
     @window.event()
     def on_draw():
+        #window.clear()
         board.DrawBoard()
         
     pyglet.app.run()

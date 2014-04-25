@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 import pyglet
 import BasePiece
 
@@ -51,7 +51,7 @@ class Piece(BasePiece.BasePiece):
 
 if __name__ == "__main__":
     window = pyglet.window.Window()
-    p = Piece("象", 100, 100)
+    p = Piece(u"象", 100, 100)
     
     @window.event()
     def on_mouse_press(x, y, button, modifiers):
@@ -65,6 +65,7 @@ if __name__ == "__main__":
     
     @window.event()
     def on_draw():
+        window.clear()
         p.ShowPiece()
 
     

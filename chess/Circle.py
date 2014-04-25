@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 import pyglet
 import math
 
@@ -45,6 +45,7 @@ if __name__ == "__main__":
     
     @window.event()
     def on_draw():
+        window.clear()
         c.circle_batch.draw()
         
     pyglet.app.run()
